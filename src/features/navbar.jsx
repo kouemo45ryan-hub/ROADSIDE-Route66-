@@ -1,5 +1,5 @@
 import React from 'react'
-import logo from '../assets/images/Logo Route66.png'
+import logo from '/images/Logo Route66.png'
 import { Link } from 'react-router-dom';
 
 
