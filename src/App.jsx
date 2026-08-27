@@ -1,9 +1,10 @@
 import './App.css'
+import { Navbar } from './features/navbar'
 
 function App() {
     return(
-        <div>
-            <h1 className='text-red'>Mon zizi jaune</h1>
+        <div className='bg-[#FFF8EA] min-h-screen'>
+            <Navbar/>
         </div>
     )
 }
