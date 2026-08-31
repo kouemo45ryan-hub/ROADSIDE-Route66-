@@ -4,7 +4,7 @@ export function Hero(){
 
 
     return(
-        <div className="w-full md:h-120 min-h-125 bg-[url('/images/hero.png')] bg-cover bg-center bg-no-repeat ">
+        <div data-aos="fade-up" className="w-full md:h-120 min-h-125 bg-[url('/images/hero.png')] bg-cover bg-center bg-no-repeat ">
             <div className="bg-[#00000071] flex flex-col justify-center px-6 md:px-0 md:h-120 min-h-125 w-full">
                 <div className="max-w-6xl w-full mx-auto md:pl-20 lg:p-40 flex flex-col gap-6">
                     <h1 className="font-bebas md:text-7xl text-5xl italic text-[#F5E8D0] leading-none">
