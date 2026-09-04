@@ -3,7 +3,7 @@ import { FaTimes } from 'react-icons/fa';
 
 export function CheckoutModal({ isOpen, onClose, panier, onViderPanier }) {
     // Calculs financiers
-    const sousTotal = panier.reduce((total, item) => total + (item.prix * item.quantite), 0);
+    const sousTotal = panier.reduce((total, item) => total + (item.price * item.quantite), 0);
     const taxes = sousTotal * 0.05;
     const totalGeneral = sousTotal + taxes;
 

@@ -3,7 +3,7 @@ import { FaTimes, FaPlus, FaMinus, FaTrash } from 'react-icons/fa';
 
 export function PanierView({ isOpen, onClose, panier, onModifierQuantite, onSupprimer,onOuvrirCheckout }) {
 
-    const totalPrix = panier.reduce((total, item) => total + (item.prix * item.quantite), 0);
+    const totalPrix = panier.reduce((total, item) => total + (item.price * item.quantite), 0);
 
     return (
         <>
@@ -36,22 +36,22 @@ export function PanierView({ isOpen, onClose, panier, onModifierQuantite, onSupp
                     ) : (
                         panier.map((item, index) => (
                             <div key={index} className="flex items-center gap-4 bg-white p-3 rounded-xl shadow-sm border border-gray-100">
-                                <img src={item.image} alt={item.nom} className="w-16 h-16 object-cover rounded-lg" />
+                                <img src={item.image} alt={item.name} className="w-16 h-16 object-cover rounded-lg" />
 
                                 <div className="flex-1">
-                                    <h4 className="font-barlow font-bold text-[#121010] text-sm uppercase">{item.nom}</h4>
-                                    <p className="text-[#C9362B] font-bold text-sm mt-0.5">$ {(item.prix * item.quantite).toFixed(2)}</p>
+                                    <h4 className="font-barlow font-bold text-[#121010] text-sm uppercase">{item.name}</h4>
+                                    <p className="text-[#C9362B] font-bold text-sm mt-0.5">$ {(item.price * item.quantite).toFixed(2)}</p>
 
                                     <div className="flex items-center gap-3 mt-2">
                                         <button
-                                            onClick={() => onModifierQuantite(item.nom, -1)}
+                                            onClick={() => onModifierQuantite(item.name, -1)}
                                             className="w-6 h-6 bg-gray-100 text-gray-600 rounded flex items-center justify-center hover:bg-[#C9362B] hover:text-white transition-colors cursor-pointer text-xs"
                                         >
                                             <FaMinus />
                                         </button>
                                         <span className="font-barlow font-bold text-sm w-4 text-center">{item.quantite}</span>
                                         <button
-                                            onClick={() => onModifierQuantite(item.nom, 1)}
+                                            onClick={() => onModifierQuantite(item.name, 1)}
                                             className="w-6 h-6 bg-gray-100 text-gray-600 rounded flex items-center justify-center hover:bg-[#C9362B] hover:text-white transition-colors cursor-pointer text-xs"
                                         >
                                             <FaPlus />
@@ -60,7 +60,7 @@ export function PanierView({ isOpen, onClose, panier, onModifierQuantite, onSupp
                                 </div>
 
                                 <button
-                                    onClick={() => onSupprimer(item.nom)}
+                                    onClick={() => onSupprimer(item.name)}
                                     className="text-gray-400 hover:text-red-600 p-2 transition-colors cursor-pointer"
                                 >
                                     <FaTrash size={16} />

@@ -1,17 +1,28 @@
 import { Card } from "../components/cart"
-import Burger from '../../public/images/Roadside Burger.jpg'
-import nugg from '../../public/images/nugg.jpg'
-import Chiken from '../../public/images/Chiken.jpg'
-import Milks from '../../public/images/Milkshake.jpg'
 import {Button} from '../components/button'
+import {useState, useEffect} from 'react'
 
-const MENU =[
-    {image:Burger , nom: 'RoadSide Burger', description:"Smash beef,cheddar,bacon,picles,onions, our special sauce", prix:'12.99', badge:'nouveau'},
-    {image:nugg, nom:'RoadSide Nuggest', description:'Smash beef,cheddar,bacon,picles,onions, our special sauce', prix:'9.49', badge: 'fondant'},
-    {image:Chiken , nom: 'RoadSide Chiken', description:"Smash beef,cheddar,bacon,picles,onions, our special sauce", prix:'14.99', badge:'PEAKLE'},
-    {image:Milks, nom:'RoadSide MilkShaKe', description:'Smash beef,cheddar,bacon,picles,onions, our special sauce', prix:'11.30', badge: 'HIGHT TASTE'}
-]
 export function SmallMenu({onPanierAdd}){
+
+const [MENU, setMENU] = useState([]);
+
+useEffect(() => {
+    async function fetchProduct(){
+        const response = await fetch('http://localhost:3000/api/produits')
+        const data = await response.json()
+
+        const parseNumber = data.map(produit =>({
+            ...produit,
+            price : parseFloat(produit.price),
+        }))
+
+        setMENU(parseNumber)
+        console.log('Produits avec prix convertis:', parseNumber)
+        console.log(MENU)
+    }
+    fetchProduct()
+}, []);
+
     return(
         <section data-aos="fade-up">
             <p className="text-center text-[#C9362B] font-bebas py-4">
@@ -27,10 +38,10 @@ export function SmallMenu({onPanierAdd}){
                 data-aos="fade-up"
                 data-aos-delay={id * 150}
                 key={id}
-                image = {menu.image}
-                nom = {menu.nom}
+                image = {null}
+                nom = {menu.name}
                 description = {menu.description}
-                prix = {menu.prix}
+                prix = {menu.price}
                 badge = {menu.badge}
                 onClick = {() => onPanierAdd(menu)} />))}
             </section>

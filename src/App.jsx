@@ -28,11 +28,11 @@ function App() {
 
     const ajouterAuPanier = (produit) => {
         setpanier((prevpanier) => {
-            const articleExiste = prevpanier.find(item => item.nom === produit.nom)
+            const articleExiste = prevpanier.find(item => item.name === produit.name)
 
             if (articleExiste) {
                 return prevpanier.map(item =>
-                    item.nom === produit.nom ? { ...item, quantite: item.quantite + 1 } : item
+                    item.name === produit.name ? { ...item, quantite: item.quantite + 1 } : item
                 );
             }
             return [...prevpanier, { ...produit, quantite: 1 }]
@@ -49,7 +49,7 @@ function App() {
     const modifierQuantite = (nomProduit, changement) => {
         setpanier((prevPanier) =>
             prevPanier.map(item => {
-                if (item.nom === nomProduit) {
+                if (item.name === nomProduit) {
                     const nouvelleQuantite = item.quantite + changement;
                     return { ...item, quantite: nouvelleQuantite < 1 ? 0 : nouvelleQuantite };
                 }
@@ -59,7 +59,7 @@ function App() {
     };
 
     const supprimerDuPanier = (nomProduit) => {
-        setpanier((prevPanier) => prevPanier.filter(item => item.nom !== nomProduit));
+        setpanier((prevPanier) => prevPanier.filter(item => item.name !== nomProduit));
     };
 
     const [isCheckoutOuvert, setIsCheckoutOuvert] = useState(false);
